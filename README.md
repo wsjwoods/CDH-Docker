@@ -36,7 +36,7 @@ sudo yum install docker-ce
 `docker network create cdh` 创建名为cdh的docker网络
 
 `docker network ls` 查看已有的网络
-![图片alt](https://github.com/fuhaiq/umbrella/blob/master/cdh-docker/img/1.png)
+![图片alt](https://github.com/wsjwoods/CDH-Docker/blob/master/img/1.png)
 
 ### 构建cdh5/mysql镜像
 嗯。。。。。。。不需要构建，直接用官方的mariadb即可
@@ -45,7 +45,7 @@ sudo yum install docker-ce
 
 #### 准备
 下载CDH 安装包以及 CM包，把Dockerfile和所有构建文件放在同一个目录下
-![图片alt](https://github.com/fuhaiq/umbrella/blob/master/cdh-docker/img/2.png)
+![图片alt](https://github.com/wsjwoods/CDH-Docker/blob/master/img/2.png)
 详细信息见Dockerfile，里面有注释。以下文件自己下载
 - CDH-5.16.1-1.cdh5.16.1.p0.3-el7.parcel
 - CDH-5.16.1-1.cdh5.16.1.p0.3-el7.parcel.sha
@@ -59,7 +59,7 @@ sudo yum install docker-ce
 ### 构建cdh5/agent镜像
 #### 准备
 下载CDH 安装包以及 CM包，把Dockerfile和所有构建文件放在同一个目录下
-![图片alt](https://github.com/fuhaiq/umbrella/blob/master/cdh-docker/img/3.png)
+![图片alt](https://github.com/wsjwoods/CDH-Docker/blob/master/img/3.png)
 详细信息见Dockerfile，里面有注释。以下文件自己下载
 - cloudera-manager-centos7-cm5.16.1_x86_64.tar.gz
 - jdk-8u191-linux-x64.tar.gz
@@ -98,7 +98,7 @@ docker run --name cdh-master -h cdh-master --net=cdh --privileged -p 7180:7180 \
 - /hadoop – 外部数据目录（把数据和容器隔离，方便备份，迁移）
 
 到了安装界面的时候，数据根目录修改为/hadoop 如 HDFS配置如下:
-![图片alt](https://github.com/fuhaiq/umbrella/blob/master/cdh-docker/img/4.png)
+![图片alt](https://github.com/wsjwoods/CDH-Docker/blob/master/img/4.png)
 这样数据和容器就可以分离了。
 **当创建好具体组件容器后，需要手动打通SSH无密码登录。**如下
 1. 先进入cdh-master `docker exec -it cdh-master /bin/bash` 执行
@@ -178,7 +178,7 @@ docker run --name cdh-hdfs-dn-3 -h cdh-hdfs-dn-3 --net=cdh --privileged \
 
 ### 目前遇到的坑
 #### 添加节点的时候遇到这种情况
-![图片alt](https://github.com/fuhaiq/umbrella/blob/master/cdh-docker/img/5.png)
+![图片alt](https://github.com/wsjwoods/CDH-Docker/blob/master/img/5.png)
 ```
 Src file /opt/cloudera/parcels/.flood/CDH-5.16.1-1.cdh5.16.1.p0.3-el7.parcel/CDH-5.16.1-1.cdh5.16.1.p0.3-el7.parcel does not exist
 ```
